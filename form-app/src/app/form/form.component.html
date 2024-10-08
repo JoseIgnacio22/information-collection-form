@@ -1,0 +1,57 @@
+<div>
+    <fieldset>
+        <div class="legend-progress-container">
+            <div>
+            <legend>Formulario de captación de información</legend>
+            <mat-progress-bar mode="determinate" value="{{getPercentage()}}"></mat-progress-bar>
+            </div>
+            <span class="percentage">{{getPercentage()}}%</span>
+        </div>
+        @switch (page) {
+            @case (1) {
+            <label><strong>{{questions[0].question}}</strong>
+            <textarea placeholder="answer" [(ngModel)]="questions[0].result"></textarea>
+            </label>
+            }
+            @case (2) {
+                <label for="example-radio-group-label"><strong>{{questions[1].question}}</strong></label>
+                <mat-radio-group
+                  aria-labelledby="example-radio-group-label"
+                  [(ngModel)]="questions[1].result">
+                  @for (answer of answers; track answer) {
+                    <mat-radio-button [value]="answer">{{answer}}</mat-radio-button>
+                  }
+                    <mat-radio-button value="Otro"> Otro: 
+                        <input class="other-input" type="text" placeholder="answer" [(ngModel)]="questions[1].other" />
+                    </mat-radio-button>
+                </mat-radio-group>
+            }
+            @case (3) {
+            <label><strong>{{questions[2].question}}</strong>
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="questions[2].result" >
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </label>
+            }
+        }
+    </fieldset>
+    @if (page < 4) {
+        <button type="button" (click)="nextPage()">Siguiente</button>
+    } @else{
+        <h2>Resumen</h2>
+        <ul>
+                @for (question of questions; track question) {
+                    <li>
+                        <strong>{{question.question}}</strong>: {{question.result}}
+                        @if (question.result === 'Otro') {
+                            : {{question.other}}
+                        }
+                    </li>
+                }
+        </ul>
+    }
+</div>

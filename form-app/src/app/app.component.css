@@ -1,0 +1,25 @@
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+mat-card {
+    max-width: 500px;
+    margin: 0 auto;
+    padding-top: 6px;
+    font-size: 15px;
+    color: grey;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 6px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #138066;
+    color: #f7ebeb;
+}
