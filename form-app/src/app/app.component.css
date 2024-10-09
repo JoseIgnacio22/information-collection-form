@@ -1,16 +1,32 @@
 div {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: #dddbdb;
+    font-size: 12px;
+}
+
 mat-card {
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
     padding-top: 6px;
     font-size: 15px;
     color: grey;
+    z-index: 1;
+}
+
+mat-card-content:first-child {
+    font-size: 20px;
+    color: #515151;
 }
 
 button {

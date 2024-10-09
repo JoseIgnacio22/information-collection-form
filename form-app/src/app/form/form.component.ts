@@ -5,12 +5,12 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {provideNativeDateAdapter} from '@angular/material/core';
+import {provideNativeDateAdapter, MAT_DATE_LOCALE} from '@angular/material/core';
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  providers: [provideNativeDateAdapter()],
+  providers: [{provide: MAT_DATE_LOCALE, useValue: 'es-ES'}, provideNativeDateAdapter()],
   imports: [MatProgressBarModule, MatRadioModule, FormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './form.component.html',
@@ -21,16 +21,16 @@ export class FormComponent {
   answers: string[] = ['Respuesta 1', 'Respuesta 2', 'Respuesta 3'];
   questions = [
     {
-      question: 'Question 1',
+      question: 'Pregunta 1',
       result: '',
     },
     {
-      question: 'Question 2',
+      question: 'Pregunta 2',
       result: '',
       other: '',
     },
     {
-      question: 'Question 3',
+      question: 'Pregunta 3',
       result: '',
     }
   ];
@@ -41,6 +41,15 @@ export class FormComponent {
 
   getPercentage() {
     return ((this.page-1) * 100 / 3) | 0;
+  }
+
+  getFormattedDate(dateString: string): string {
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, '0'); 
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); 
+    const year = date.getFullYear();  
+  
+    return `Día/Mes/Año: ${day}/${month}/${year}`;
   }
 
   lastPageForm() {
