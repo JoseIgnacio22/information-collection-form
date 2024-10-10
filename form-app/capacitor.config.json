@@ -1,0 +1,5 @@
+{
+  "appId": "form.app",
+  "appName": "form-app",
+  "webDir": "dist/form-app/browser"
+}

@@ -10,7 +10,7 @@
             </div>
                 @switch (page) {
                     @case (1) {
-                        <label><strong>{{questions[0].question}}</strong>
+                        <label class="question"><strong>{{questions[0].question}}</strong>
                             <textarea [(ngModel)]="questions[0].result" name="question1" placeholder="*" required></textarea>
                             @if ( form.controls['question1'].invalid && (form.controls['question1'].touched || form.controls['question1'].dirty)) {
                                 <small>@if (form.controls['question1'].errors?.['required']){Este campo es obligatorio.}</small>
@@ -18,7 +18,7 @@
                         </label>
                     }
                     @case (2) {
-                        <label for="example-radio-group-label"><strong>{{questions[1].question}}</strong></label>
+                        <label class="question" for="example-radio-group-label"><strong>{{questions[1].question}}</strong></label>
                         <small> *Solo puedes selecionar una respuesta.</small>
                         <mat-radio-group
                             aria-labelledby="example-radio-group-label"
@@ -32,14 +32,28 @@
                         </mat-radio-group>
                     }
                     @case (3) {
-                        <label><strong>{{questions[2].question}}</strong>
+                        <label class="question" for="questio3"><strong>{{questions[2].question}}</strong>
+                            <div class="date-container">
+                                    <p-calendar
+                                    [(ngModel)]="questions[2].result" 
+                                    [iconDisplay]="'input'" 
+                                    [touchUI]="true" 
+                                    [readonlyInput]="true"
+                                    [showIcon]="true"
+                                    dateFormat="dd.mm.yy" 
+                                    placeholder="DD/MM/AAAA"
+                                    name="question3"
+                                    required />
+                            </div>
+                          <!-- Waiting for fix on DatePicker
                             <mat-form-field>
                                 <mat-label>Elige una fecha</mat-label>
                                 <input matInput [matDatepicker]="picker" [(ngModel)]="questions[2].result" name="question3" required>
                                 <mat-hint>DD/MM/AAAA</mat-hint>
                                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>
+                                <mat-datepicker touchUi #picker></mat-datepicker>
                             </mat-form-field>
+                            -->
                             @if ( form.controls['question3'].invalid && (form.controls['question3'].touched || form.controls['question3'].dirty)) {
                                 <small>@if (form.controls['question3'].errors?.['required']){Este campo es obligatorio.}</small>
                             }

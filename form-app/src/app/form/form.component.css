@@ -7,7 +7,7 @@ legend {
     color: grey;
 }
 
-label {
+.question {
     display: block;
     margin: 16px 0;
 }
@@ -72,6 +72,13 @@ mat-form-field {
     flex-direction: column;
     margin: 15px 0;
     align-items: flex-start;
+}
+
+.date-container {
+    margin-top: 22px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
 }
 
 small {

@@ -2,16 +2,19 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms'
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatRadioModule} from '@angular/material/radio';
+/* Waiting for fix on DatePicker
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {provideNativeDateAdapter, MAT_DATE_LOCALE} from '@angular/material/core';
+*/
+import { CalendarModule } from 'primeng/calendar';
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  providers: [{provide: MAT_DATE_LOCALE, useValue: 'es-ES'}, provideNativeDateAdapter()],
-  imports: [MatProgressBarModule, MatRadioModule, FormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule],
+  /*providers: [{provide: MAT_DATE_LOCALE, useValue: 'es-ES'}, provideNativeDateAdapter()], */
+  imports: [MatProgressBarModule, MatRadioModule, FormsModule, CalendarModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './form.component.html',
   styleUrl: './form.component.css'
